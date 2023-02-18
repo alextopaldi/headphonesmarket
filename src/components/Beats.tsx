@@ -6,6 +6,10 @@ import { Autoplay, Navigation, Pagination } from "swiper";
 import 'swiper/swiper-bundle.css'
 import { faBluetooth, faInstagram, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { useState } from "react";
+import { ProductModel } from "../models/ProductModel";
+import { Product } from "./Product";
+import { Basket } from "./Basket";
+import { useAppSelector } from "../hooks/redux";
 export function Beats() {
 
     const logo = require('../media/logo.png')
@@ -16,9 +20,6 @@ export function Beats() {
     const about_img = require('../media/about-img.png')
     const about_bg = require('../media/about-bg.png')
     const sound = require('../media/sound.png')
-    const product1 = require('../media/product1.png')
-    const product2 = require('../media/product2.png')
-    const product3 = require('../media/product3.png')
     const bag = require('../media/bag.png')
 
     function SubmitHandler(event : React.FormEvent) {
@@ -28,6 +29,15 @@ export function Beats() {
 
     const [navBackVision, setNavBackVision] = useState(false)
     const [menuVision, setMenuVision] = useState(false)
+    const [basketVision, setBasketVision] = useState(false)
+
+    const {products} = useAppSelector(state => state.productReducer)
+
+    function ProductsCount() {
+        let productsCount = 0
+        products.map(item => productsCount += item.count)
+        return productsCount
+    }
 
     function NavBackChanger() {
         if(window.scrollY >= 50) {
@@ -42,6 +52,30 @@ export function Beats() {
 
     const navStyle = navBackVision? 'navigation active' : 'navigation'
     const menuStyle = menuVision? 'burger-menu show' : 'burger-menu hide'
+    const basketStyle = basketVision? 'basket show' : 'basket hide'
+    const [productsMain, setProductsMain] = useState<ProductModel[]> ([
+        {
+            id: 1,
+            name : 'Blue phones',
+            price : 256,
+            img : require('../media/product1.png'),
+            count: 1
+        },
+        {
+            id: 2,
+            name : 'Green phones',
+            price : 226,
+            img : require('../media/product2.png'),
+            count: 1
+        },
+        {
+            id: 3,
+            name : 'Red phones',
+            price : 238,
+            img : require('../media/product3.png'),
+            count: 1
+        },
+    ])
 
     return (
         <>
@@ -68,35 +102,38 @@ export function Beats() {
                 </Link>
             </div>
             <div className="home" id="home">
-                
                     <nav className={navStyle}>
-                    <div className="container">
-                        <div className="navigation-list">
-                            <Link className='navigation-list__item' to='home' smooth={true} duration={1000}>
-                                <img src={logo} alt="" />
-                            </Link>
-                            <div className="navigation__btns">
-                                <Link className='navigation-list__item-center' to='home' smooth={true} duration={1000}>
-                                    <div className="home-circle">
-                                        <FontAwesomeIcon className='nav-icon' icon={faMagnifyingGlass} />
-                                    </div>
+                        <div className="container ">
+                            <div className="navigation-list">
+                                <Link className='navigation-list__item' to='home' smooth={true} duration={1000}>
+                                    <img src={logo} alt="" />
                                 </Link>
-                                <Link className='navigation-list__item-center' to='home' smooth={true} duration={1000}>
-                                    <div className="home-circle">
-                                        <FontAwesomeIcon className='nav-icon' icon={faBasketShopping} />
+                                <div className="navigation__btns">
+                                    <Link className='navigation-list__item-center' to='home' smooth={true} duration={1000}>
+                                        <div className="home-circle">
+                                            <FontAwesomeIcon className='nav-icon' icon={faMagnifyingGlass} />
+                                        </div>
+                                    </Link>
+                                    <div className='navigation-list__item-center' onClick={() => setBasketVision(prev => !prev)}>
+                                        <div className="home-circle">
+                                            <FontAwesomeIcon className='nav-icon' icon={faBasketShopping} />
+                                            <div className="basket-count">
+                                                <p>{ProductsCount()}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </Link>
-                                <Link className='navigation-list__item-center' to='home' smooth={true} duration={1000}>
-                                    <div className="home-circle">
-                                        <FontAwesomeIcon className='nav-icon' icon={faUser} />
-                                    </div>
-                                </Link>
-                            </div>
-                            <div className="circle" onClick={() => setMenuVision(true)}>
-                                <FontAwesomeIcon className='nav-icon burger' icon={faBars} />
+                                    <Link className='navigation-list__item-center' to='home' smooth={true} duration={1000}>
+                                        <div className="home-circle">
+                                            <FontAwesomeIcon className='nav-icon' icon={faUser} />
+                                        </div>
+                                    </Link>
+                                </div>
+                                <div className="circle" onClick={() => setMenuVision(true)}>
+                                    <FontAwesomeIcon className='nav-icon burger' icon={faBars} />
+                                </div>
                             </div>
                         </div>
-                        </div>
+                        <Basket BasketHide={() => setBasketVision(false)} basketClass={basketStyle} products={products}/>
                     </nav>
                 
                 <div className="container home-center">
@@ -209,48 +246,7 @@ export function Beats() {
                         <p className="product-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis<br />nunc ipsum aliquam, ante.</p>
                     </div>
                     <div className="product__items">
-                        <div className="product__item">
-                            <div className="product__img-text">
-                                <div className="product__img">
-                                    <img src={product1} alt="" />
-                                    <div className="product-icon-container">
-                                        <FontAwesomeIcon className="product-icon" icon={faCartShopping}></FontAwesomeIcon>
-                                    </div>
-                                </div>
-                                <div className="product__text-price">
-                                    <p>Blue Headphone</p>
-                                    <p className="product-price">$ 256</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="product__item">
-                            <div className="product__img-text">
-                                <div className="product__img">
-                                    <img src={product2} alt="" />
-                                    <div className="product-icon-container">
-                                        <FontAwesomeIcon className="product-icon" icon={faCartShopping}></FontAwesomeIcon>
-                                    </div>
-                                </div>
-                                <div className="product__text-price">
-                                    <p>Green Headphone</p>
-                                    <p className="product-price">$ 256</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="product__item">
-                            <div className="product__img-text">
-                                <div className="product__img">
-                                    <img src={product3} alt="" />
-                                    <div className="product-icon-container">
-                                        <FontAwesomeIcon className="product-icon" icon={faCartShopping}></FontAwesomeIcon>
-                                    </div>
-                                </div>
-                                <div className="product__text-price">
-                                    <p>Red Headphone</p>
-                                    <p className="product-price">$ 256</p>
-                                </div>
-                            </div>
-                        </div>
+                        {productsMain.map(product => <Product product={product} key={product.id} ></Product>)}
                     </div>
                 </div>
             </div>
@@ -311,9 +307,9 @@ export function Beats() {
                         </div>
                         <div className="footer-item">
                             <div className="footer-links">
-                                <Link className="footer-link" to="">Home</Link>
-                                <Link className="footer-link" to="">About</Link>
-                                <Link className="footer-link" to="">Product</Link>
+                                <Link className="footer-link" to="home" smooth={true} duration={1000}>Home</Link>
+                                <Link className="footer-link" to="about" smooth={true} duration={1000}>About</Link>
+                                <Link className="footer-link" to="product" smooth={true} duration={1000}>Product</Link>
                             </div>
                         </div>
                         <div className="footer-item">
