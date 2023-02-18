@@ -44,8 +44,8 @@ export function Basket({products, basketClass, BasketHide} : BasketProps) {
             {products.length!=0 && 
                 <div className="basket-btns-text">
                     <div className="basket-results">
-                        <p>Items: {TotalCount()}</p>
-                        <p>Total: {TotalPrice()}$</p>
+                        <p>Items: <b>{TotalCount()}</b></p>
+                        <p>Total: <b>{TotalPrice()}$</b></p>
                     </div>
                     <div className="basket-btns">
                         <button onClick={() => dispatch(deleteProducts())}>Clear cart</button>

@@ -5,8 +5,17 @@ interface ProductState {
     products : ProductModel[]
 }
 
+function TotalProducts() {
+    if (localStorage.getItem('products') != null) {
+        const raw : any = localStorage.getItem('products') || []
+        const res : ProductModel[] = JSON.parse(raw)
+        return res
+    }
+    return []
+}
+
 const initialState: ProductState = {
-    products: []
+    products: TotalProducts()
 }
 
 export const ProductSlice = createSlice ({

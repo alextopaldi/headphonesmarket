@@ -5,11 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from "swiper";
 import 'swiper/swiper-bundle.css'
 import { faBluetooth, faInstagram, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductModel } from "../models/ProductModel";
 import { Product } from "./Product";
 import { Basket } from "./Basket";
-import { useAppSelector } from "../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { ProductSlice } from "../redux/redusers/ProductSlice";
 export function Beats() {
 
     const logo = require('../media/logo.png')
@@ -53,6 +54,7 @@ export function Beats() {
     const navStyle = navBackVision? 'navigation active' : 'navigation'
     const menuStyle = menuVision? 'burger-menu show' : 'burger-menu hide'
     const basketStyle = basketVision? 'basket show' : 'basket hide'
+
     const [productsMain, setProductsMain] = useState<ProductModel[]> ([
         {
             id: 1,
@@ -76,7 +78,21 @@ export function Beats() {
             count: 1
         },
     ])
+    // const dispatch = useAppDispatch()
+    // const {busketProducts} = ProductSlice.actions
 
+    useEffect(() => {
+        localStorage.setItem('products', JSON.stringify(products))
+      }, [products])
+
+    // useEffect(() => {
+    //     if (localStorage.getItem('products') != null) {
+    //       const raw : any = localStorage.getItem('todos') || []
+    //       JSON.parse(raw).map((item : ProductModel) => dispatch(busketProducts(item)))
+    //       console.log(raw)
+    //     }
+    //   }, [])
+    
     return (
         <>
         <div className="wrapper">
