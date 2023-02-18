@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/headphonesmarket/static/css/main.9208b1e3.css",
+    "main.js": "/headphonesmarket/static/js/main.d44b5b06.js",
+    "static/media/Background.png": "/headphonesmarket/static/media/Background.8f2089a1df0aaebc9af1.png",
+    "static/media/home-img.png": "/headphonesmarket/static/media/home-img.d3de0011e47e769d399b.png",
+    "static/media/bag.png": "/headphonesmarket/static/media/bag.1e595186797edb5a35ba.png",
+    "static/media/about-img.png": "/headphonesmarket/static/media/about-img.9d786c90b9c5af487ad0.png",
+    "static/media/product1.png": "/headphonesmarket/static/media/product1.ff3ab78aa8cfddee3831.png",
+    "static/media/product3.png": "/headphonesmarket/static/media/product3.2e301fc3857158ce0dd9.png",
+    "static/media/swiper1.png": "/headphonesmarket/static/media/swiper1.f09bb156b9c98a23ad87.png",
+    "static/media/product2.png": "/headphonesmarket/static/media/product2.8a832282083910047d2c.png",
+    "static/media/swiper3.png": "/headphonesmarket/static/media/swiper3.bf4fe355fc4ebb8a5d35.png",
+    "static/media/swiper2.png": "/headphonesmarket/static/media/swiper2.a563b6f121d78c280cbd.png",
+    "static/media/sb-background.png": "/headphonesmarket/static/media/sb-background.43efd8ca4febbd44294b.png",
+    "index.html": "/headphonesmarket/index.html",
+    "main.9208b1e3.css.map": "/headphonesmarket/static/css/main.9208b1e3.css.map",
+    "main.d44b5b06.js.map": "/headphonesmarket/static/js/main.d44b5b06.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9208b1e3.css",
+    "static/js/main.d44b5b06.js"
+  ]
+}
