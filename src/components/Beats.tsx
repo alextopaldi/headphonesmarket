@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 import { ProductModel } from "../models/ProductModel";
 import { Product } from "./Product";
 import { Basket } from "./Basket";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { ProductSlice } from "../redux/redusers/ProductSlice";
+import { useAppSelector } from "../hooks/redux";
+import { useAddProduct } from "../hooks/addProduct";
 export function Beats() {
 
     const logo = require('../media/logo.png')
@@ -72,27 +72,27 @@ export function Beats() {
         },
         {
             id: 3,
-            name : 'Red phones',
+            name : 'Pink phones',
             price : 238,
             img : require('../media/product3.png'),
             count: 1
         },
     ])
-    // const dispatch = useAppDispatch()
-    // const {busketProducts} = ProductSlice.actions
+
+    const homeProduct : ProductModel = {
+        id: 4,
+        name: 'Red phones',
+        price: 435,
+        img : require('../media/home-img.png'), 
+        count: 1
+    }
+
+    const {AddProduct1} = useAddProduct({product : homeProduct})
 
     useEffect(() => {
         localStorage.setItem('products', JSON.stringify(products))
       }, [products])
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('products') != null) {
-    //       const raw : any = localStorage.getItem('todos') || []
-    //       JSON.parse(raw).map((item : ProductModel) => dispatch(busketProducts(item)))
-    //       console.log(raw)
-    //     }
-    //   }, [])
-    
     return (
         <>
         <div className="wrapper">
@@ -167,7 +167,7 @@ export function Beats() {
                                 <h3>$ 465</h3>
                             </div>
                         </div>
-                        <button className="home-center__btn">BUY NOW</button>
+                        <button onClick={AddProduct1} className="home-center__btn">BUY NOW</button>
                     </div>
                 </div>
             </div>
@@ -303,7 +303,6 @@ export function Beats() {
                 </div>
             </div>
             <div className="subscribe" id="subscribe">
-                {/* <div className="subscribe__backgrund"></div> */}
                 <div className="container subscribe-container">
                     <form onSubmit={SubmitHandler} className="subscribe-form" action="">
                         <h2>Subscribe</h2>
