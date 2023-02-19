@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/headphonesmarket/static/css/main.9208b1e3.css",
-    "main.js": "/headphonesmarket/static/js/main.d44b5b06.js",
+    "main.js": "/headphonesmarket/static/js/main.51f8053f.js",
     "static/media/Background.png": "/headphonesmarket/static/media/Background.8f2089a1df0aaebc9af1.png",
     "static/media/home-img.png": "/headphonesmarket/static/media/home-img.d3de0011e47e769d399b.png",
     "static/media/bag.png": "/headphonesmarket/static/media/bag.1e595186797edb5a35ba.png",
@@ -15,10 +15,10 @@
     "static/media/sb-background.png": "/headphonesmarket/static/media/sb-background.43efd8ca4febbd44294b.png",
     "index.html": "/headphonesmarket/index.html",
     "main.9208b1e3.css.map": "/headphonesmarket/static/css/main.9208b1e3.css.map",
-    "main.d44b5b06.js.map": "/headphonesmarket/static/js/main.d44b5b06.js.map"
+    "main.51f8053f.js.map": "/headphonesmarket/static/js/main.51f8053f.js.map"
   },
   "entrypoints": [
     "static/css/main.9208b1e3.css",
-    "static/js/main.d44b5b06.js"
+    "static/js/main.51f8053f.js"
   ]
 }
